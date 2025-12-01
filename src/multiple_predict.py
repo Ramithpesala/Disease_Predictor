@@ -5,11 +5,11 @@ from streamlit_option_menu import option_menu
 
 # loading the saved models
 
-model_diabetes = pickle.load(open("D:/ML JOB/Multiple Disease Prediction System/src/diabetes_model.sav", "rb"))  # here we have to replace "\" --> "/"
+model_diabetes = pickle.load(open("diabetes_model.sav", "rb"))  # here we have to replace "\" --> "/"
 
-model_heart = pickle.load(open("D:/ML JOB/Multiple Disease Prediction System/srcs/heart_model.sav", "rb"))
+model_heart = pickle.load(open("heart_model.sav", "rb"))
 
-model_parkinsons = pickle.load(open("D:/ML JOB/Multiple Disease Prediction System/src/parkinsons_model.sav", "rb"))
+model_parkinsons = pickle.load(open("parkinsons_model.sav", "rb"))
 
 
 # create the side bar for navigation
