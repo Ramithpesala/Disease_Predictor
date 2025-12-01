@@ -7,9 +7,9 @@ from streamlit_option_menu import option_menu
 
 model_diabetes = pickle.load(open("src/diabetes_model.sav", "rb"))  # here we have to replace "\" --> "/"
 
-model_heart = pickle.load(open("heart_model.sav", "rb"))
+model_heart = pickle.load(open("src/heart_model.sav", "rb"))
 
-model_parkinsons = pickle.load(open("parkinsons_model.sav", "rb"))
+model_parkinsons = pickle.load(open("src/parkinsons_model.sav", "rb"))
 
 
 # create the side bar for navigation
