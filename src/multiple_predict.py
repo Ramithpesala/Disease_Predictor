@@ -5,7 +5,7 @@ from streamlit_option_menu import option_menu
 
 # loading the saved models
 
-model_diabetes = pickle.load(open("diabetes_model.sav", "rb"))  # here we have to replace "\" --> "/"
+model_diabetes = pickle.load(open("src/diabetes_model.sav", "rb"))  # here we have to replace "\" --> "/"
 
 model_heart = pickle.load(open("heart_model.sav", "rb"))
 
