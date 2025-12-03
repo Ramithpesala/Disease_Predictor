@@ -18,9 +18,8 @@ with st.sidebar:
 
     selected = option_menu('Multiple Disease Predictor',
                            ['Diabetes Prediction',
-                           'Heart Disease Prediction',
-                           'Parkinsons Disease Prediction'],
-                           icons = ['activity','suit-heart-fill','person'],
+                           'Heart Disease Prediction'],
+                           icons = ['activity','suit-heart-fill'],
                            default_index=0)   # this is where we start our web page when first loaded 
                                               # defaut_index=0 --> Diabetes page
                                               # default_index=1 --> Heart page
@@ -80,13 +79,95 @@ if (selected == 'Heart Disease Prediction'):
 
     st.title('Heart Disease Predictor')
 
+    # getting input from user
+    col4, col5, col6 = st.columns(3)
+
+    with col4:
+        age = st.text_input('Age of Person')
+
+    with col5:
+        sex = st.text_input('Sex: Male = 1 or Female = 0')
+
+    with col6:
+        cp = st.text_input('Chest Pain Types')    
+
+    with col4:
+        trestbps = st.text_input('Resting Blood Pressure')
+
+    with col5:
+        chol = st.text_input('Serum Cholestoral in mg/dl')
+
+    with col6:
+        fbs = st.text_input('Fasting Blood Sugar > 120mg/dl')
+        
+    with col4:
+        restecg = st.text_input('Resting Electrocardiographic results')
+    
+    with col5:
+        thalach = st.text_input('Maximum Heart Rate achieved')
+    
+    with col6:
+        exang = st.text_input('Exercise Induced Angina')
+    
+    with col4:
+        oldpeak = st.text_input('ST depression induced by exercise')
+    
+    with col5:
+        slope = st.text_input('Slope of the peak exercise ST segment')
+    
+    with col6:
+        ca = st.text_input('Major vessels colored by flourosopy')
+
+    with col4:
+        thal = st.text_input('thal: 0 = normal; 1 = fixed detect; 2 = reversable defect')
+
+    
+    # for prediction
+    heart_diagnosis = ''
+
+    # create button for prediction
+    if st.button('Heart Disease Test'):
+
+        try:
+            # Convert to numeric
+            age = int(age)
+
+            # Map sex
+            if sex.lower() in ["male", "m"]:
+                sex = 1
+            else:
+                sex = 0
+
+            cp = int(cp)
+            trestbps = float(trestbps)
+            chol = float(chol)
+            fbs = int(fbs)
+            restecg = int(restecg)
+            thalach = float(thalach)
+            exang = int(exang)
+            oldpeak = float(oldpeak)
+            slope = int(slope)
+            ca = int(ca)
+            thal = int(thal)
 
 
-# parkinsons page
+            heart_pred = model_heart.predict([[age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]])
 
-if (selected == 'Parkinsons Disease Prediction'):
+            if (heart_pred[0] == 0):
+               heart_diagnosis = 'Person has not Heart Disease'
+        
+            else:
+               heart_diagnosis = 'Person has Heart Disease'
+        
+        except ValueError:
+            heart_diagnosis = "❌ Error: Please enter only NUMBERS for all fields."
+        
+        st.success(heart_diagnosis)
+    
+    
 
-    st.title('Parkinsons Disease Predictor')
+
+
 
 
 
